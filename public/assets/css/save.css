@@ -1,0 +1,33 @@
+
+.article-box {
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.5);
+	margin: 10px;
+	padding: 20px;
+	align-content: center;
+	width: 1000px;
+	height: auto;
+	border-radius: 5px;
+}
+
+.title {
+	color: #fbf9f6;
+	margin: 15px;
+	font-size: 20px;
+	float: left;
+}
+
+.title:hover {
+	color: #ffb648;
+	text-decoration: none;
+}
+
+.mdl-button {
+	color: #eeeeee;
+	float: right;
+	margin-top: 9px;
+	margin-left: 5px;
+}
+
+
+

@@ -39,23 +39,25 @@
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="">Scrap!</a>
-            <a class="mdl-navigation__link" href="">Saved Articles</a>
+            <a class="mdl-navigation__link" href="/scrape">Scrape!</a>
+            <a class="mdl-navigation__link" href="/articles">Scraped Articles</a>
+            <a class="mdl-navigation__link" href="/savedArticles">Saved Articles</a>
           </nav>
         </div>
       </header>
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">EARTH NEWS</span>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">Scrap!</a>
-          <a class="mdl-navigation__link" href="">Save Articles</a>
+          <a class="mdl-navigation__link" href="/scrape">Scrape!</a>
+          <a class="mdl-navigation__link" href="/articles">Scraped Articles</a>
+          <a class="mdl-navigation__link" href="/savedArticles">Saved Articles</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
-        <div class="page-content"><!-- Your content goes here --></div>
+        <div class="page-content"> {{{ body }}}</div>
       </main>
     </div>
-         {{{ body }}}
+  
     <!-- Material Design Lite JavaScript -->
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
     

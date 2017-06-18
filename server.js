@@ -80,6 +80,7 @@ app.get("/scrape", function(req, res) {
             // Add the text and href of every link, and save them as properties of the result object
             result.title = $(this).children("a").text();
             result.link = $(this).children("a").attr("href");
+            result.saved = "false";
 
             articlesArray.push(result);
 
@@ -88,14 +89,14 @@ app.get("/scrape", function(req, res) {
             var entry = new Article(result);
 
             // Now, save that entry to the db
-            entry.save(function(err, doc) {
+            entry.save(function(err, res) {
                 // Log any errors
                 if (err) {
                     console.log(err);
                 }
                 // Or log the doc
                 else {
-                    // console.log(doc);
+                    console.log("scraped!");
                 }
             });
 
@@ -103,23 +104,39 @@ app.get("/scrape", function(req, res) {
     });
 
     // Tell the browser that we finished scraping the text
-    console.log(articlesArray);
-    var articles = { articles: articlesArray};
-    res.render("articles", articles);
+
     // res.send("scraped!");
 });
 
-// This will get the articles we scraped from the mongoDB
-app.get("/articles", function(req, res) {
+
+app.get("/savedArticles", function(req, res) {
     // Grab every doc in the Articles array
-    Article.find({}, function(error, doc) {
+    Article.find({ saved: true }, function(error, doc) {
         // Log any errors
         if (error) {
             console.log(error);
         }
         // Or send the doc to the browser as a json object
         else {
-            res.json(doc);
+
+            var articles = { articles: doc };
+            res.render("save", articles);
+        }
+    });
+});
+
+// This will get the articles we scraped from the mongoDB
+app.get("/articles", function(req, res) {
+    // Grab every doc in the Articles array
+    Article.find({ saved: false }, function(error, doc) {
+        // Log any errors
+        if (error) {
+            console.log(error);
+        }
+        // Or send the doc to the browser as a json object
+        else {
+            var articles = { articles: doc };
+            res.render("articles", articles);
         }
     });
 });
@@ -144,6 +161,20 @@ app.get("/articles/:id", function(req, res) {
 });
 
 
+app.post("/save/:id", function(req, res) {
+
+    Article.findOneAndUpdate({ "_id": req.params.id }, { "saved": req.body.saved })
+
+    .exec(function(err, doc) {
+        // Log any errors
+        if (err) {
+            console.log(err);
+        } else {
+            // Or send the document to the browser
+            res.send(doc);
+        }
+    });
+});
 
 // Create a new note or replace an existing note
 app.post("/articles/:id", function(req, res) {

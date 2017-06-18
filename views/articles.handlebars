@@ -1,16 +1,15 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/articles.css"/>
+<script type="text/javascript" src="/assets/js/articles.js"></script>
 
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
 <div class="container">
 <div class="row text-center">
 {{#each articles}}
         <div class = "article-box">
-              <h6 class="title"> {{title}} </h6> 
-              <a href={{link}}>{{link}}</a> 
+              
+             <a href={{link}}  target="_blank"><h6 class="title">{{title}}</h6></a> 
               <!-- Raised button with ripple -->
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-  SAVE
-</button>
+			<button id={{_id}} saved={{saved}} class="save-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">save</button>
         </div>
         <br>
     {{/each}}

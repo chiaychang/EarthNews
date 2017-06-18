@@ -1,0 +1,22 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/save.css"/>
+<script type="text/javascript" src="/assets/js/save.js"></script>
+<br><br><br><br><br>
+<div class="container">
+<div class="row text-center">
+
+{{#each articles}}      
+     <div class = "article-box">
+         <a href={{link}}  target="_blank"><h6 class="title">{{title}}</h6></a> 
+              <!-- Raised button with ripple -->
+<button id={{_id}} saved={{saved}} class="note-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+  add note
+</button>
+<button id={{_id}} saved={{saved}} class="unsave-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+  unsave
+</button>
+        </div>
+        <br>
+{{/each}}
+
+</div>
+</div>
