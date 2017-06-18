@@ -1,0 +1,27 @@
+a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.article-box {
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.5);
+	margin: 10px;
+	padding: 0px 5px;
+	align-content: center;
+	width: 900px;
+	height: auto;
+	border-radius: 5px;
+}
+
+.title {
+	color: #fbf9f6;
+}
+
+.mdl-button {
+	color: #eeeeee;
+	float: right;
+	top: -33px;
+	right: 5px;
+}

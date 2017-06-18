@@ -1,0 +1,18 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/articles.css"/>
+
+<br><br><br><br><br><br><br><br><br><br>
+<div class="container">
+<div class="row text-center">
+{{#each articles}}
+        <div class = "article-box">
+              <h6 class="title"> {{title}} </h6> 
+              <a href={{link}}>{{link}}</a> 
+              <!-- Raised button with ripple -->
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+  SAVE
+</button>
+        </div>
+        <br>
+    {{/each}}
+</div>
+</div>
