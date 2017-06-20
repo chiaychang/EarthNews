@@ -67,12 +67,16 @@ app.get("/", function(req, res) {
 articlesArray = [];
 // A GET request to scrape the echojs website
 app.get("/scrape", function(req, res) {
+  
+  var number = 0;
     // First, we grab the body of the html with request
     request("http://www.climatechangenews.com/", function(error, response, html) {
         // Then, we load that into cheerio and save it to $ for a shorthand selector
         var $ = cheerio.load(html);
         // Now, we grab every h2 within an article tag, and do the following:
         $(".media-body h2").each(function(i, element) {
+
+          number++;
 
             // Save an empty result object
             var result = {};
@@ -96,16 +100,19 @@ app.get("/scrape", function(req, res) {
                 }
                 // Or log the doc
                 else {
-                    console.log("scraped!");
+                   
                 }
             });
 
         });
+        
+        var articlesN = {
+          count: number
+        }
+       res.render("notice", articlesN);
     });
+    
 
-    // Tell the browser that we finished scraping the text
-
-    // res.send("scraped!");
 });
 
 

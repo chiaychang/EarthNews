@@ -5,12 +5,14 @@
 <div class="container">
 <div class="row text-center">
 {{#each articles}}
-        <div class = "article-box">
+<div class="col-md-3"></div>
+        <div class = "article-box col-md-8">
               
              <a href={{link}}  target="_blank"><h6 class="title">{{title}}</h6></a> 
               <!-- Raised button with ripple -->
 			<button id={{_id}} saved={{saved}} class="save-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">save</button>
         </div>
+<div class="col-md-1"></div>
         <br>
     {{/each}}
 </div>

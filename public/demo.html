@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    
+    
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <!-- Material Design Lite CSS -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.brown-orange.min.css" />
+
+    <link rel="stylesheet" href="assets/css/modal-dialog.css">
+    <script src="assets/js/modal-dialog.js"></script>
+    <style>
+    body {
+        padding: 16px;
+    }
+    
+    button {
+        margin-right: 8px;
+    }
+    </style>
+</head>
+
+<body>
+    <button id="show-info" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Show Info
+    </button>
+    <button id="show-action" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Show Action
+    </button>
+    <button id="show-not-cancelable" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Show not cancelable
+    </button>
+    <button id="show-loading" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Show loading
+    </button>
+    <script>
+    var lorem = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.';
+    $('#show-info').click(function() {
+        showDialog({
+            title: 'Information',
+            text: lorem
+        })
+    });
+    $('#show-action').click(function() {
+        showDialog({
+            title: 'Action',
+            text: 'This dialog can be closed by pressing ESC or clicking outside of the dialog.<br/>Pressing "YAY" will fire the configured action.',
+            negative: {
+                title: 'Nope'
+            },
+            positive: {
+                title: 'Yay',
+                onClick: function(e) {
+                    alert('Action performed!');
+                }
+            }
+        });
+    });
+    $('#show-not-cancelable').click(function() {
+        showDialog({
+            title: 'Not cancelable',
+            text: 'This dialog can only be closed by using one of the buttons.',
+            negative: {
+                title: 'Nope'
+            },
+            positive: {
+                title: 'Yay'
+            },
+            cancelable: false
+        });
+    });
+    $('#show-loading').click(function() {
+        showLoading();
+        setTimeout(function() {
+            hideLoading();
+        }, 3000);
+    });
+    </script>
+</body>
+
+</html>
